@@ -48,3 +48,8 @@ h4 {
 #relList {
 	padding: 0px;
 }
+#status{
+	text-transform: lowercase;
+	font-family: monospace;
+	font-size: 13px;
+}
