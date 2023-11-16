@@ -46,7 +46,7 @@ async function loadPotions(param = 0) {
 		sidebar += "<li data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>` + potions[i]["name"] + "</li>"; 
 	}
 	document.getElementById("relList").innerHTML = sidebar;
-	let status = "Показано: " + potions.length + "; скрыто: 0; всего: " + potions.length;
+	let status = "Показано: " + potions.length + ";<br>скрыто: 0;<br>всего: " + potions.length;
 	document.getElementById("status").innerHTML = status;
 	
 	allTagsSet = sortSet(allTagsSet);
@@ -99,10 +99,6 @@ async function loadPotions(param = 0) {
 };
 loadPotions(0);
 function doFilter(){
-	/*element.classList.add("my-class");
-And element.classList.remove to remove a class:
-
-element.classList.remove("my-class");*/
 	const selectedTag = document.querySelector("#inpTags").value;
 	const selectedGood = document.querySelector("#inpActGood").value;
 	const selectedBad = document.querySelector("#inpActBad").value;
@@ -148,7 +144,7 @@ element.classList.remove("my-class");*/
 		}
 		sidebar += "<li class='"+ isVisible +"' data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>` + potions[i]["name"] + "</li>"; 
 	}
-	let status = "Показано: " + show + "; скрыто: " + hide + "; всего: " + total;
+	let status = "Показано: " + show + ";<br>скрыто: " + hide + ";<br>всего: " + total;
 	document.getElementById("relList").innerHTML = sidebar;
 	document.getElementById("status").innerHTML = status;
 }
