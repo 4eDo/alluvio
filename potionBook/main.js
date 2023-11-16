@@ -165,6 +165,7 @@ function showMe(potName) {
 	let author = "";
 	author += findedPotion["isIngr"] ? "<p><b>Первооткрыватель</b>: <i>" : "<p><b>Создатель</b>: <i>";
 	author += findedPotion["author"] && findedPotion["author"]!="" ? findedPotion["author"] : "Неизвестен";
+	author += findedPotion["createDate"] && findedPotion["createDate"]!="" ? "(открыто " + findedPotion["createDate"] + ")": "";
 	author += "</i></p>";
 	potionCard = potionCard.replace("{{AUTHOR}}", findedPotion["author"] && findedPotion["author"]!="" ? author : ""); 
 	
@@ -180,7 +181,7 @@ function showMe(potName) {
 		  diff += "Средне, придётся постараться.";
 		  break;
 		case 4:
-		  diff += "Сложно, требуетсч большой опыт.";
+		  diff += "Сложно, требуется большой опыт.";
 		  break;
 		case 5:
 		  diff += "Очень сложно, работа для мастера.";
