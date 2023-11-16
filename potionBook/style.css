@@ -4,6 +4,8 @@
 	justify-content: space-around;
 	flex-wrap: nowrap;
 	align-items: flex-end;
+	font-family: monospace;
+    	font-size: 14px;
 }
 #filter div {
 	width: 140px;
