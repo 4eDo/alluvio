@@ -1,0 +1,250 @@
+
+
+
+var potionsSrc= "https://raw.githubusercontent.com/4eDo/alluvio/main/potionBook/data.json";
+
+const TEMPLATE_CARD = `<div>
+	<h3>{{NAME}}<sup>{{CANONICAL}}</sup></h3>
+	{{OTHER_NAMES}}
+	{{AUTHOR}}
+	{{DIFFICULTY}}
+	<h4>Вид:</h4>
+	<p>{{FORM}}</p>
+	<h4>Описание:</h4>
+	<p>{{DESCRIPTION}}</p>
+	{{NEEDED}}
+	<h4>Полезное действие:</h4>
+	<p>{{ACTIONS_GOOD}}</p>
+	<h4>Негативное действие:</h4>
+	<p>{{ACTIONS_BAD}}</p>
+	{{ANTIDOTE}}
+	{{TAGS}}
+</div>`;
+
+var allTagsSet = new Set();
+var allActionsGood = new Set();
+var allActionsBad = new Set();
+var potions;
+
+async function loadPotions(param = 0) {
+	const response = await fetch(potionsSrc);
+	potions = await response.json();
+	potions = potions.sort((a, b) => {
+	  if (a.name < b.name) {
+		return -1;
+	  }
+	});
+	//console.log(potions);
+	var sidebar = "";
+	for (let i = 0; i < potions.length; i++) {
+		for(var t in potions[i]["tags"]) {
+			allTagsSet.add(potions[i]["tags"][t]);
+		}
+		for(var ag in potions[i]["actionsGood"]) {
+			allActionsGood.add(potions[i]["actionsGood"][ag]);
+		}
+		for(var ab in potions[i]["actionsBad"]) {
+			allActionsBad.add(potions[i]["actionsBad"][ab]);
+		}
+		sidebar += "<li data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>` + potions[i]["name"] + "</li>"; 
+	}
+	document.getElementById("relList").innerHTML = sidebar;
+	let status = "Показано: " + potions.length + "; скрыто: 0; всего: " + potions.length;
+	document.getElementById("status").innerHTML = status;
+	
+	allTagsSet = sortSet(allTagsSet);
+	allActionsGood = sortSet(allActionsGood);
+	allActionsBad = sortSet(allActionsBad);
+
+	var _formGood = document.getElementById("actGoodCell");
+	var _formBad = document.getElementById("actBadCell");
+	var _formTags  = document.getElementById("tagsCell");
+	
+    var _inputActGood = _formGood.appendChild(document.createElement('input'));
+    var _inputActBad = _formBad.appendChild(document.createElement('input'));
+    var _inputTags = _formTags.appendChild(document.createElement('input'));
+	
+    var _datalistActGood = _formGood.appendChild(document.createElement('datalist'));
+    var _datalistActBad = _formBad.appendChild(document.createElement('datalist'));
+    var _datalistTags = _formTags.appendChild(document.createElement('datalist'));
+
+	_datalistActGood.id = 'datalistActGood';
+	_datalistActBad.id = 'datalistActBad';
+	_datalistTags.id = 'datalistTags';
+	
+	_inputActGood.setAttribute('list','datalistActGood');
+	_inputActBad.setAttribute('list','datalistActBad');
+	_inputTags.setAttribute('list','datalistTags');
+	
+	_inputActGood.setAttribute('id','inpActGood');
+	_inputActBad.setAttribute('id','inpActBad');
+	_inputTags.setAttribute('id','inpTags');
+
+	var _option = "<option value='Показать всё' />";
+	for(let t1 of allTagsSet) {
+		_option += "<option value='" + t1 + "' />";
+	}
+	_datalistTags.innerHTML = _option;
+	
+	_option = "<option value='Показать всё' />";
+	for(let ag1 of allActionsGood) {
+		_option += "<option value='" + ag1 + "' />";
+	}
+	_datalistActGood.innerHTML = _option;
+	
+	_option = "<option value='Показать всё' />";
+	for(let ab1 of allActionsBad) {
+		_option += "<option value='" + ab1 + "' />";
+	}
+	_datalistActBad.innerHTML = _option;
+  
+  return true;
+};
+loadPotions(0);
+function doFilter(){
+	/*element.classList.add("my-class");
+And element.classList.remove to remove a class:
+
+element.classList.remove("my-class");*/
+	const selectedTag = document.querySelector("#inpTags").value;
+	const selectedGood = document.querySelector("#inpActGood").value;
+	const selectedBad = document.querySelector("#inpActBad").value;
+	
+	var sidebar = "";
+	let isOkTag = false;
+	let isOkGood = false;
+	let isOkBad = false;
+	
+	let show = 0;
+	let hide = 0;
+	let total = potions.length;
+	for (let i = 0; i < potions.length; i++) {
+		isOkTag = false;
+		isOkGood = false;
+		isOkBad = false;
+		
+		if(selectedTag == "" || selectedTag == "Показать всё") {
+			isOkTag = true;
+		} else {
+			isOkTag = potions[i]["tags"].includes(selectedTag);
+		}
+		
+		if(selectedGood == "" || selectedGood == "Показать всё") {
+			isOkGood = true;
+		} else {
+			isOkGood = potions[i]["actionsGood"].includes(selectedGood);
+		}
+		
+		if(selectedBad == "" || selectedBad == "Показать всё") {
+			isOkBad = true;
+		} else {
+			isOkBad = potions[i]["actionsBad"].includes(selectedBad);
+		}
+		
+		let isVisible;
+		if(isOkTag && isOkGood && isOkBad) {
+			isVisible = "show";
+			show++;
+		} else {
+			isVisible = "hide";
+			hide++;
+		}
+		sidebar += "<li class='"+ isVisible +"' data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>` + potions[i]["name"] + "</li>"; 
+	}
+	let status = "Показано: " + show + "; скрыто: " + hide + "; всего: " + total;
+	document.getElementById("relList").innerHTML = sidebar;
+	document.getElementById("status").innerHTML = status;
+}
+
+function showMe(potName) {
+	let potionCard = TEMPLATE_CARD;
+	let findedPotion = findPotByName(potName);
+	if(findedPotion == 0) return;
+	let antidotes = "";
+	let ingredients = "";
+	
+	potionCard = potionCard.replace("{{NAME}}", findedPotion["name"]); 
+	potionCard = potionCard.replace("{{CANONICAL}}", findedPotion["isCanon"] ? "каноничное" : ""); 
+	potionCard = potionCard.replace("{{OTHER_NAMES}}", findedPotion["otherNames"] && findedPotion["otherNames"].length != 0
+		? "<p>Иные названия: <i>" + findedPotion["otherNames"].join(', ') + "</i></p>"
+		: ""); 
+		
+	let author = "";
+	author += findedPotion["isIngr"] ? "<p>Первооткрыватель: <i>" : "<p>Создатель: <i>";
+	author += findedPotion["author"] && findedPotion["author"]!="" ? findedPotion["author"] : "Неизвестен";
+	author += "</i></p>";
+	potionCard = potionCard.replace("{{AUTHOR}}", findedPotion["author"] && findedPotion["author"]!="" ? author : ""); 
+	
+	let diff = "<p>Сложность: <i>";
+	switch(findedPotion["difficulty"]){
+		case 1:
+		  diff += "Элементарно, справится даже ребёнок.";
+		  break;
+		case 2:
+		  diff += "Достаточно просто, справится домохозяйка.";
+		  break;
+		case 3:
+		  diff += "Средне, придётся постараться.";
+		  break;
+		case 4:
+		  diff += "Сложно, требуетсч большой опыт.";
+		  break;
+		case 5:
+		  diff += "Очень сложно, работа для мастера.";
+		  break;
+		default:
+		  diff += "Не определено.";
+		  break;
+	}
+	diff += "</i></p>";
+	potionCard = potionCard.replace("{{DIFFICULTY}}", findedPotion["isPotion"] ? diff : ""); 
+	potionCard = potionCard.replace("{{FORM}}", findedPotion["form"] ? findedPotion["form"] : ""); 
+	potionCard = potionCard.replace("{{DESCRIPTION}}", findedPotion["description"] ? findedPotion["description"] : ""); 
+	
+	let needed = "<p><b>Состав</b>: <i>";
+	let neededArr = [];
+	for(var ingr in findedPotion["neededList"]) {
+		let existIngr = findPotByName(findedPotion["neededList"][ingr]);
+		let temp = `<span class="existPot" onclick="showMe('{{POT_NAME}}')">{{POT_NAME}}</span>`;
+		if(existIngr == 0) {
+			neededArr.push(findedPotion["neededList"][ingr]);
+		} else {
+			neededArr.push(temp.replaceAll("{{POT_NAME}}", findedPotion["neededList"][ingr]));
+		}
+	}
+	needed += neededArr.join(', ');
+	needed += "</i></p>";
+	potionCard = potionCard.replace("{{NEEDED}}", needed); 
+	
+	potionCard = potionCard.replace("{{ACTIONS_GOOD}}", findedPotion["actionsGood"].join(', ')); 
+	potionCard = potionCard.replace("{{ACTIONS_BAD}}", findedPotion["actionsBad"].join(', ')); 
+	potionCard = potionCard.replace("{{ANTIDOTE}}", findedPotion["antidote"] && findedPotion["antidote"].length != 0
+		? "<p><b>Противоядия</b>: <i>" + findedPotion["antidote"].join(', ') + "</i></p>"
+		: ""); 
+	potionCard = potionCard.replace("{{TAGS}}", findedPotion["tags"] && findedPotion["tags"].length != 0
+		? "<p><b>Метки</b>: <i>" + findedPotion["tags"].join(', ') + "</i></p>"
+		: "");
+
+	document.getElementById("entity").innerHTML = potionCard;
+}
+
+function sortSet(set) {
+  const entries = [];
+  for (const member of set) {
+    entries.push(member);
+  }
+  set.clear();
+  for (const entry of entries.sort()) {
+    set.add(entry);
+  }
+  return set;
+};
+
+function findPotByName(potName){
+	for (let i = 0; i < potions.length; i++){
+		if (potions[i]["name"] == potName) {
+			return potions[i];
+		}
+	}
+	return 0;
+}
