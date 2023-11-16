@@ -47,9 +47,13 @@ h4 {
 }
 #relList {
 	padding: 0px;
+	height: 500px;
 }
 #status{
 	text-transform: lowercase;
 	font-family: monospace;
 	font-size: 13px;
+}
+.canonMarker {
+    font-size: 16px;
 }
