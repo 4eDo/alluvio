@@ -198,7 +198,7 @@ function showMe(potName) {
 	let neededArr = [];
 	for(var ingr in findedPotion["neededList"]) {
 		let existIngr = findPotByName(findedPotion["neededList"][ingr]);
-		let temp = `<span class="existPot" onclick="showMe('{{POT_NAME}}')">{{POT_NAME}}</span>`;
+		let temp = `<span class="existPot" title="Открыть" onclick="showMe('{{POT_NAME}}')">{{POT_NAME}}</span>`;
 		if(existIngr == 0) {
 			neededArr.push(findedPotion["neededList"][ingr]);
 		} else {
