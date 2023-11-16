@@ -43,9 +43,11 @@ async function loadPotions(param = 0) {
 		for(var ab in potions[i]["actionsBad"]) {
 			allActionsBad.add(potions[i]["actionsBad"][ab]);
 		}
-		sidebar += "<li data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>`
-  + potions[i]["isCanon"] ? '<span class="material-symbols-outlined canonMarker">book_3</span>' : '<span class="material-symbols-outlined canonMarker">person</span>'
-  + potions[i]["name"] + "</li>"; 
+		sidebar += "<li data-name='"
+		+ potions[i]["name"]
+		+ `' onclick='showMe("` + potions[i]["name"] + `")'>`;
+		sidebar += potions[i]["isCanon"] ? '<span class="material-symbols-outlined canonMarker">book_3</span>' : '<span class="material-symbols-outlined canonMarker">person</span>';
+		sidebar += potions[i]["name"] + "</li>"; 
 	}
 	document.getElementById("relList").innerHTML = sidebar;
 	let status = "Показано: " + potions.length + ";<br>скрыто: 0;<br>всего: " + potions.length;
@@ -144,9 +146,12 @@ function doFilter(){
 			isVisible = "hide";
 			hide++;
 		}
-		sidebar += "<li class='"+ isVisible +"' data-name='" + potions[i]["name"] + `' onclick='showMe("` + potions[i]["name"] + `")'>`
-			+ potions[i]["isCanon"] ? '<span class="material-symbols-outlined canonMarker">book_3</span>' : '<span class="material-symbols-outlined canonMarker">person</span>'
-			+ potions[i]["name"] + "</li>"; 
+		
+		sidebar += "<li class='"+ isVisible +"' data-name='"
+		+ potions[i]["name"]
+		+ `' onclick='showMe("` + potions[i]["name"] + `")'>`;
+		sidebar += potions[i]["isCanon"] ? '<span class="material-symbols-outlined canonMarker">book_3</span>' : '<span class="material-symbols-outlined canonMarker">person</span>';
+		sidebar += potions[i]["name"] + "</li>"; 
 	}
 	let status = "Показано: " + show + ";<br>скрыто: " + hide + ";<br>всего: " + total;
 	document.getElementById("relList").innerHTML = sidebar;
