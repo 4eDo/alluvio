@@ -170,12 +170,12 @@ function showMe(potName) {
 		: ""); 
 		
 	let author = "";
-	author += findedPotion["isIngr"] ? "<p>Первооткрыватель: <i>" : "<p>Создатель: <i>";
+	author += findedPotion["isIngr"] ? "<p><b>Первооткрыватель</b>: <i>" : "<p><b>Создатель</b>: <i>";
 	author += findedPotion["author"] && findedPotion["author"]!="" ? findedPotion["author"] : "Неизвестен";
 	author += "</i></p>";
 	potionCard = potionCard.replace("{{AUTHOR}}", findedPotion["author"] && findedPotion["author"]!="" ? author : ""); 
 	
-	let diff = "<p>Сложность: <i>";
+	let diff = "<p><b>Сложность:</b> <i>";
 	switch(findedPotion["difficulty"]){
 		case 1:
 		  diff += "Элементарно, справится даже ребёнок.";
@@ -201,7 +201,7 @@ function showMe(potName) {
 	potionCard = potionCard.replace("{{FORM}}", findedPotion["form"] ? findedPotion["form"] : ""); 
 	potionCard = potionCard.replace("{{DESCRIPTION}}", findedPotion["description"] ? findedPotion["description"] : ""); 
 	
-	let needed = "<p><b>Состав</b>: <i>";
+	let needed = "<h4>Состав:</h4><p><i>";
 	let neededArr = [];
 	for(var ingr in findedPotion["neededList"]) {
 		let existIngr = findPotByName(findedPotion["neededList"][ingr]);
@@ -219,10 +219,10 @@ function showMe(potName) {
 	potionCard = potionCard.replace("{{ACTIONS_GOOD}}", findedPotion["actionsGood"].join(', ')); 
 	potionCard = potionCard.replace("{{ACTIONS_BAD}}", findedPotion["actionsBad"].join(', ')); 
 	potionCard = potionCard.replace("{{ANTIDOTE}}", findedPotion["antidote"] && findedPotion["antidote"].length != 0
-		? "<p><b>Противоядия</b>: <i>" + findedPotion["antidote"].join(', ') + "</i></p>"
+		? "<h4>Противоядия: </h4><p><i>" + findedPotion["antidote"].join(', ') + "</i></p>"
 		: ""); 
 	potionCard = potionCard.replace("{{TAGS}}", findedPotion["tags"] && findedPotion["tags"].length != 0
-		? "<p><b>Метки</b>: <i>" + findedPotion["tags"].join(', ') + "</i></p>"
+		? "<h4>Метки: </h4><p><i>" + findedPotion["tags"].join(', ') + "</i></p>"
 		: "");
 
 	document.getElementById("entity").innerHTML = potionCard;
