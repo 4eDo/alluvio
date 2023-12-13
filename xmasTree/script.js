@@ -1,4 +1,4 @@
-const VERSION = "v 1.03";
+const VERSION = "v 1.04";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -44,6 +44,35 @@ function getUsers() {
 });
   return users;
 } 
+
+function addTable() {
+  var myTableDiv =  $("#treeGrid");
+
+  var table = document.createElement('TABLE');
+  table.border = '1';
+
+  var tableBody = document.createElement('TBODY');
+  table.appendChild(tableBody);
+	var cellId = 0;
+
+  for (var i = 0; i < 25; i++) {
+    var tr = document.createElement('TR');
+    tableBody.appendChild(tr);
+
+    for (var j = 0; j < 25; j++) {
+      var td = document.createElement('TD');
+      td.width = '120';
+      td.height = '120';
+	td.setAttribute('contenteditable', true);
+	td.setAttribute('cellId', cellId);
+	td.setAttribute('title', cellId);
+	    cellId++;
+      tr.appendChild(td);
+    }
+  }
+  myTableDiv.appendChild(table);
+}
+addTable();
 
 function init() {
 	var maxId = getLastRegisteredUserId();
