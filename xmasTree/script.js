@@ -1,4 +1,4 @@
-const VERSION = "v 1.11";
+const VERSION = "v 1.13";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -81,7 +81,7 @@ function init() {
 	 shuffle(placesOnTree);
 	let placeId = 0;
 	users.forEach((user, index) => {
-		  $("[cellid='" + placeId + "']")[0].html(ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username));
+		  document.querySelector("[cellid='" + placeId + "']")innerHTML = ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
 		  placeId++;
 	  });
 }
