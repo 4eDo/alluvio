@@ -1,0 +1,94 @@
+#zoom {
+  transform-origin: 0px 0px;
+  transform: scale(1) translate(0px, 0px);
+  cursor: grab;
+}
+.container {
+    overflow: hidden;
+}
+
+#left {
+    font-family: 'deconeuelight', sans-serif;
+    font-size: 90px;
+    line-height: 1;
+    float: left;
+    width: 1500px;
+    height: 3000px;
+    margin-top: 0;
+    -webkit-shape-outside: polygon(100% 8%, 90% 14%, 92% 25%, 74% 37%, 54% 58%, 46% 70%, 62% 75%, 100% 80%, 99% 100%, 0 100%, 0 0, 100% 0);
+    shape-outside: polygon(100% 8%, 90% 14%, 92% 25%, 74% 37%, 54% 58%, 46% 70%, 62% 75%, 100% 80%, 99% 100%, 0 100%, 0 0, 100% 0);
+}
+#right {
+        height: 3000px;
+    width: 1500px;
+    float: right;
+    shape-outside: polygon(0 16%, 0 10%, 0 0, 100% 0, 100% 100%, 0 100%, 0 81%, 53% 77%, 59% 70%, 50% 57%, 34% 50%, 32% 29%)
+} 
+
+/* #right {
+height: 3000px;
+    width: 1500px;
+    float: right;
+    -webkit-shape-outside: polygon(71% 54%, 54% 12%, 54% 0, 100% 0, 100% 100%, 52% 100%, 53% 80%, 78% 75%);
+    shape-outside: polygon(71% 54%, 54% 12%, 54% 0, 100% 0, 100% 100%, 52% 100%, 53% 80%, 78% 75%);
+    -webkit-clip-path: polygon(71% 54%, 54% 12%, 54% 0, 100% 0, 100% 100%, 52% 100%, 53% 80%, 78% 75%);
+} */
+
+#treeBg {
+  background-image: url("https://4edo.github.io/alluvio/xmasTree/tree.jpg");
+  width: 3000px;
+  height: 3000px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+.backgroundAva {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+/* Стиль для елочных украшений */	
+.bauble
+{        
+  display: inline-block;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+  margin: 5px;
+	
+	-moz-box-shadow: 0 0 5px #777777, 2px 0 5px #f00, 0 2px 5px #08ff58, -2px 0 5px #1b00ff, 0 -2px 5px #edad00;
+	box-shadow:  0 0 5px #777777, 2px 0 5px #f00, 0 2px 5px #08ff58, -2px 0 5px #1b00ff, 0 -2px 5px #edad00;
+	-webkit-box-shadow: 0 0 5px #777777, 2px 0 5px #f00, 0 2px 5px #08ff58, -2px 0 5px #1b00ff, 0 -2px 5px #edad00;
+	
+	border: 1px solid rgba(0,0,0,0.8);
+	height: 100px;
+	width: 100px;
+}
+
+.name {
+    color: #fff;
+    ANT: JIS90;
+    style: normal;
+    text-align: center;
+    font-family: monospace;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    word-break: break-word;
+    width: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+    text-shadow: 2px 0 1px #f00, 0 2px 1px #08ff58, -2px 0 1px #1b00ff, 0 -2px 1px #edad00;
+    align-content: space-between;
+  transition: 1s;
+  opacity: 0;
+}
+.name:hover {
+    background-color: rgba(0, 0,0,0.7);
+  opacity: 1;
+}
