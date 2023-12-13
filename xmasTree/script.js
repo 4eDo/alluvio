@@ -1,4 +1,4 @@
-const VERSION = "v 1.04";
+const VERSION = "v 1.05";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -46,7 +46,6 @@ function getUsers() {
 } 
 
 function addTable() {
-  var myTableDiv =  $("#treeGrid");
 
   var table = document.createElement('TABLE');
   table.border = '1';
@@ -70,7 +69,7 @@ function addTable() {
       tr.appendChild(td);
     }
   }
-  myTableDiv.appendChild(table);
+  $("#treeGrid").appendChild(table);
 }
 addTable();
 
