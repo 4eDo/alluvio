@@ -1,4 +1,8 @@
+const VERSION = "v 1.01";
 const MAX_ID = 1000; // сколько разных id проверять
+
+
+console.log("~~ X-mas tree " + VERSION + " init ~~");
 
 function getUsers(ids) {
   var users = [];
@@ -46,4 +50,3 @@ let ball = `<div class='bauble backgroundAva' style='background-image: url("http
   })
 });
 
-console.log("~~ v 0.01 ~~");
