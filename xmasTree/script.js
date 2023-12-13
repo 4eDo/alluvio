@@ -69,7 +69,7 @@ function addTable() {
       tr.appendChild(td);
     }
   }
-  $("#treeGrid").appendChild(table);
+  $("#treeGrid").append(table);
 }
 addTable();
 
