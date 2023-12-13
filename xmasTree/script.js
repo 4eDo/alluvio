@@ -33,6 +33,7 @@ $("#loadUsers").click(function() {
       console.log(tempUsersArr);
       users.push(...tempUsersArr);
       tempArr = [];
+	tempUsersArr = [];
     }
   }
   tempUsersArr = getUsers(tempArr);
