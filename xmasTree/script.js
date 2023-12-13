@@ -1,8 +1,27 @@
-const VERSION = "v 1.01";
-const MAX_ID = 1000; // сколько разных id проверять
+const VERSION = "v 1.02";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
+
+function getLastRegisteredUserId() {
+  var lastId = 0;
+  const myUrlWithParams = new URL("https://alluvio.ru/api.php");
+
+  myUrlWithParams.searchParams.append("method", "board.get");
+  myUrlWithParams.searchParams.append("fields", "last_registered_user_id");
+
+  $.ajax({
+	url: myUrlWithParams.href,
+	method: 'post',
+	dataType: 'json',
+	async: false,
+	success: function(data){
+	      if(data.response.last_registered_user_id)
+		lastId = data.response.last_registered_user_id;
+	}
+});
+  return lastId;
+}
 
 function getUsers(ids) {
   var users = [];
@@ -13,24 +32,25 @@ function getUsers(ids) {
   myUrlWithParams.searchParams.append("fields", ["user_id", "username", "avatar"]);
 
   $.ajax({
-		url: myUrlWithParams.href,
-		method: 'post',
-		dataType: 'json',
-		async: false,
-		success: function(data){
-      if(data.response.users)
-       users = data.response.users;
-		}
-	});
+	url: myUrlWithParams.href,
+	method: 'post',
+	dataType: 'json',
+	async: false,
+	success: function(data){
+		if(data.response.users)
+			users = data.response.users;
+	}
+});
   return users;
 } 
 
-$("#loadUsers").click(function() {
+function init() {
+	var maxId = getLastRegisteredUserId();
 	var users = [];
   
   let tempArr = [];
   let tempUsersArr = [];
-  for(let i = 0; i <= MAX_ID; i++) {
+  for(let i = 0; i <= maxId; i++) {
     tempArr.push(i);
     if(tempArr.length == 100) {
       tempUsersArr = getUsers(tempArr);
@@ -48,5 +68,6 @@ let ball = `<div class='bauble backgroundAva' style='background-image: url("http
     $("#treeGrid").append(
       ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username));
   })
-});
+}
+init();
 
