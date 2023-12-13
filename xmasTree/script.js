@@ -1,4 +1,4 @@
-const VERSION = "v 1.06";
+const VERSION = "v 1.07";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -54,14 +54,14 @@ function addTable() {
   table.appendChild(tableBody);
 	var cellId = 0;
 
-  for (var i = 0; i < 25; i++) {
+  for (var i = 0; i < 30; i++) {
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
 
-    for (var j = 0; j < 25; j++) {
+    for (var j = 0; j < 30; j++) {
       var td = document.createElement('TD');
-      td.width = '120';
-      td.height = '120';
+      td.width = '100';
+      td.height = '100';
 	td.setAttribute('onclick', "this.style.backgroundColor = 'Red';");
 	td.setAttribute('cellId', cellId);
 	td.setAttribute('title', cellId);
