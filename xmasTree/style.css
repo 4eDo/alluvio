@@ -16,6 +16,17 @@
     background-size: cover;
 }
 
+tr:nth-child(even) td div {
+    margin-top: -30px;
+    margin-left: 15px !important;
+    position: absolute;
+}
+tr:nth-child(odd) td div {
+    margin-top: -30px;
+    margin-left: -15px !important;
+    position: absolute;
+}
+
 
 .backgroundAva {
     background-repeat: no-repeat;
