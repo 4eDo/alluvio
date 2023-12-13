@@ -54,14 +54,14 @@ function addTable() {
   table.appendChild(tableBody);
 	var cellId = 0;
 
-  for (var i = 0; i < 30; i++) {
+  for (var i = 0; i < 40; i++) {
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
 
-    for (var j = 0; j < 30; j++) {
+    for (var j = 0; j < 40; j++) {
       var td = document.createElement('TD');
-      td.width = '100';
-      td.height = '100';
+      td.width = '75';
+      td.height = '75';
 	td.setAttribute('onclick', "this.style.backgroundColor = 'Red';");
 	td.setAttribute('cellId', cellId);
 	td.setAttribute('title', cellId);
