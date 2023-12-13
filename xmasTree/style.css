@@ -28,8 +28,8 @@
 .bauble
 {        
   display: inline-block;
-	-moz-border-radius: 100px;
-	border-radius: 100px;
+	-moz-border-radius: 60px;
+	border-radius: 60px;
   margin: 5px;
 	
 	-moz-box-shadow: 0 0 5px #777777, 6px 0 8px #f00, 0 6px 8px #08ff58, -6px 0 8px #1b00ff, 0 -6px 8px #edad00;
@@ -37,8 +37,8 @@
 	-webkit-box-shadow: 0 0 5px #777777, 6px 0 8px #f00, 0 6px 8px #08ff58, -6px 0 8px #1b00ff, 0 -6px 8px #edad00;
 	
 	border: 1px solid rgba(0,0,0,0.8);
-	height: 100px;
-	width: 100px;
+	height: 60px;
+	width: 60px;
 }
 
 .name {
@@ -51,11 +51,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 60px;
     word-break: break-word;
-    width: 100px;
-	-moz-border-radius: 100px;
-	border-radius: 100px;
+    width: 60px;
+	-moz-border-radius: 60px;
+	border-radius: 60px;
     text-shadow: 2px 0 1px #f00, 0 2px 1px #08ff58, -2px 0 1px #1b00ff, 0 -2px 1px #edad00;
     align-content: space-between;
   transition: 1s;
