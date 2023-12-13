@@ -1,4 +1,4 @@
-const VERSION = "v 1.05";
+const VERSION = "v 1.06";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -62,7 +62,7 @@ function addTable() {
       var td = document.createElement('TD');
       td.width = '120';
       td.height = '120';
-	td.setAttribute('contenteditable', true);
+	td.setAttribute('onclick', "this.style.backgroundColor = 'Red';");
 	td.setAttribute('cellId', cellId);
 	td.setAttribute('title', cellId);
 	    cellId++;
