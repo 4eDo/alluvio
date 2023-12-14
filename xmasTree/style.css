@@ -15,10 +15,18 @@ td {
     height: 200px;
     background-size: cover;
     position: absolute;
-    margin-top: -109px;
-    margin-left: -52px;
     filter: saturate(9);
     pointer-events: none;
+}
+tr:nth-child(odd) td .star {
+    margin-top: -109px;
+    margin-left: -84px;
+	
+}
+tr:nth-child(even) td .star {
+    margin-top: -109px;
+    margin-left: -52px;
+	
 }
 #searchHeader {
 	z-index: 2000 !important;
