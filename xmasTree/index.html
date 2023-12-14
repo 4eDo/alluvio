@@ -22,8 +22,8 @@
 	
 	function applyFilter() {
 		var searchString = $("#findMe").val();
-		$(".bauble").css('border', '10px solid black');
-		$(".bauble:contains('" + searchString + "')").css('border', '10px solid yellow');
+		$(".finded").removeClass("finded");
+		$(".bauble:contains('" + searchString + "')").addClass("finded");
 	}
 
 	 
