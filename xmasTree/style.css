@@ -9,6 +9,17 @@
 td {
     border: 0px;
 }
+.star {
+    background: url(https://www.overtank.com/image/thumbnails/18/fc/anyxp_silver_png_100491_380x380_png-102336-380x380.png);
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    position: absolute;
+    margin-top: -109px;
+    margin-left: -52px;
+    filter: saturate(9);
+    pointer-events: none;
+}
 #searchHeader {
 	z-index: 2000 !important;
     position: fixed;
