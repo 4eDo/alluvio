@@ -6,6 +6,9 @@
 .container {
     overflow: hidden;
 }
+td {
+    border: 0px;
+}
 #searchHeader {
 	z-index: 2000 !important;
     position: fixed;
