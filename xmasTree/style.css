@@ -6,7 +6,22 @@
 .container {
     overflow: hidden;
 }
-
+#searchHeader {
+	z-index: 2000 !important;
+    position: fixed;
+    padding: 5px;
+    margin: 0px;
+    background-color: #0a052d99;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: ghostwhite;
+    font-family: monospace;
+}
+#findMe {
+    background-color: #0a052d99;
+    color: ghostwhite;
+    font-family: monospace;
+}
 #treeBg {
   background-image: url("https://4edo.github.io/alluvio/xmasTree/tree.jpg");
   width: 3000px;
