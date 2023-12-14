@@ -52,6 +52,10 @@ tr:nth-child(odd) td .bauble {
 	width: 60px;
 }
 
+.bauble:hover {
+	z-index: 1000 !important;
+}
+
 .name {
     color: #fff;
     ANT: JIS90;
