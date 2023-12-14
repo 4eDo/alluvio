@@ -1,4 +1,4 @@
-const VERSION = "v 1.16";
+const VERSION = "v 1.17";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -83,7 +83,7 @@ function init() {
 	users.forEach((user, index) => {
 		let needStar = user.group_id == 1 ? "<div class='star'></div>" : "";
 		let placeOnTreeFact;
-		if(user.id != 2) {
+		if(user.user_id != 2) {
 			placeOnTreeFact = placesOnTree[placeId];
 			placeId++;
 		} else {
