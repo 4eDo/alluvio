@@ -7,7 +7,7 @@
 </head>
 <body>
   
-  <button id="loadUsers">Load users</button>
+  <p>Найди на дереве по имени: <input type="text" id="findMe"></p>
 	<div class="zoom_outer">
 		<div id="zoom">
       <div id="treeBg" class="container"><div id="treeGrid"></div></div> 
@@ -15,4 +15,17 @@
 	</div> 
   <script src="https://alluviodev.github.io/genealogy/js/zoom.js"></script>
   <script src="script.js"></script>
+ <script>
+	 $("#findMe").on('change keyup paste', function () {
+		applyFilter();
+	});
+	
+	function applyFilter() {
+		var searchString = $("#findMe").val();
+		$(".bauble").css('border', '10px solid black');
+		$(".bauble:contains('" + searchString + "')").css('border', '10px solid yellow');
+	}
+
+	 
+ </script>
 </body>
