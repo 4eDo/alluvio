@@ -1,4 +1,4 @@
-const VERSION = "v 1.15";
+const VERSION = "v 1.16";
 
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
@@ -81,8 +81,16 @@ function init() {
 	 shuffle(placesOnTree);
 	let placeId = 0;
 	users.forEach((user, index) => {
-		  document.querySelector("[cellid='" + placesOnTree[placeId] + "']").innerHTML = ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
-		  placeId++;
+		let needStar = user.group_id == 1 ? "<div class='star'></div>" : "";
+		let placeOnTreeFact;
+		if(user.id != 2) {
+			placeOnTreeFact = placesOnTree[placeId];
+			placeId++;
+		} else {
+			placeOnTreeFact = 126;
+		}
+		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
+		  
 	  });
 }
 init();
