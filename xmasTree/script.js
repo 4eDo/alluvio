@@ -48,7 +48,7 @@ function getUsers() {
 function addTable() {
 
   var table = document.createElement('TABLE');
-  table.border = '1';
+  table.border = '0';
 
   var tableBody = document.createElement('TBODY');
   table.appendChild(tableBody);
