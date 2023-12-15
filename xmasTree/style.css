@@ -29,23 +29,22 @@ tr:nth-child(even) td .star {
 	
 }
 .you {
-    background: url(https://cdn12.picryl.com/photo/2016/12/31/frame-border-card-nature-landscapes-985626-1024.png);
-    width: 115px;
-    height: 115px;
+    background: url(https://4edo.github.io/alluvio/xmasTree/snow.png);
+    width: 111px;
+    height: 111px;
     background-size: cover;
     position: absolute;
     filter: saturate(9);
     pointer-events: none;
 }
 tr:nth-child(odd) td .you {
-    margin-top: -56px;
-    margin-left: -42px;
+    margin-top: -54px;
+    margin-left: -39px;
 	
 }
 tr:nth-child(even) td .you {
-    margin-top: -109px;
-    margin-left: -52px;
-	
+    margin-top: -54px;
+    margin-left: -9px;
 }
 #searchHeader {
 	z-index: 2000 !important;
