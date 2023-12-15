@@ -18,22 +18,31 @@ td {
     filter: saturate(9);
     pointer-events: none;
 }
-
-.you {
-    height: 60px;
-    width: 60px;
-    position: absolute;
-    border: 10px solid white;
-    border-radius: 60px;
-    pointer-events: none;
-}
-
 tr:nth-child(odd) td .star {
     margin-top: -109px;
     margin-left: -84px;
 	
 }
 tr:nth-child(even) td .star {
+    margin-top: -109px;
+    margin-left: -52px;
+	
+}
+.you {
+    background: url(https://cdn12.picryl.com/photo/2016/12/31/frame-border-card-nature-landscapes-985626-1024.png);
+    width: 115px;
+    height: 115px;
+    background-size: cover;
+    position: absolute;
+    filter: saturate(9);
+    pointer-events: none;
+}
+tr:nth-child(odd) td .you {
+    margin-top: -56px;
+    margin-left: -42px;
+	
+}
+tr:nth-child(even) td .you {
     margin-top: -109px;
     margin-left: -52px;
 	
@@ -63,12 +72,12 @@ tr:nth-child(even) td .star {
     background-size: cover;
 }
 
-tr:nth-child(even) td .bauble, tr:nth-child(even) td .you {
+tr:nth-child(even) td .bauble {
     margin-top: -30px;
     margin-left: 15px !important;
     position: absolute;
 }
-tr:nth-child(odd) td .bauble, tr:nth-child(odd) td .you {
+tr:nth-child(odd) td .bauble {
     margin-top: -30px;
     margin-left: -15px !important;
     position: absolute;
