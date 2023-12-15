@@ -1,4 +1,4 @@
-const VERSION = "v 1.21";
+const VERSION = "v 1.22";
 
 var UNAME = '';
 
@@ -19,6 +19,7 @@ var params = location.href.split('?')[1].split('&');
 if(params[0].split('=')[0]) {
 	UNAME = params[0].split('=')[1].replace("%20", " ");
 	 $("#findMe").val(UNAME);
+	applyFilter();
 }
 
 
