@@ -1,14 +1,25 @@
-const VERSION = "v 1.18";
+const VERSION = "v 1.19";
 
-
-var params = location.href.split('?')[1].split('&');
-for (x in params)
- {
-	console.log(params[x].split('=')[0] + " " + params[x].split('=')[1]);
- }
 
 console.log("~~ VIEWER_NAME " + VIEWER_NAME + " ~~");
 console.log("~~ X-mas tree " + VERSION + " init ~~");
+
+$("#findMe").on('change keyup paste', function () {
+	applyFilter();
+});
+
+function applyFilter() {
+	var searchString = $("#findMe").val();
+	$(".finded").removeClass("finded");
+	if(searchString != "") {
+		$(".bauble:contains('" + searchString + "')").addClass("finded");
+	}
+}
+var params = location.href.split('?')[1].split('&');
+if(params["uname"].split('=')[0]) {
+	 $("#findMe").val(params["uname"].split('=')[1]);
+}
+
 
 function getLastRegisteredUserId() {
   var lastId = 0;
