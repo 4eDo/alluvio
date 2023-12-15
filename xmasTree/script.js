@@ -1,4 +1,4 @@
-const VERSION = "v 1.23";
+const VERSION = "v 1.24";
 
 var UNAME = '';
 
@@ -94,6 +94,7 @@ function addTable() {
 
 function init() {
 	$("#nb").hide();
+	$(".zoom_outer").show();
 	addTable();
 	var maxId = getLastRegisteredUserId();
 	var users = getUsers();
