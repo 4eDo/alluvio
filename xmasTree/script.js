@@ -1,4 +1,4 @@
-const VERSION = "v 1.26";
+const VERSION = "v 1.28";
 
 var UNAME = '';
 
@@ -89,6 +89,13 @@ function init() {
 	$("#nb").hide();
 	$("#searchHeader").show();
 	$(".zoom_outer").show();
+	
+	var params = location.href.split('?')[1].split('&');
+	if(params[0].split('=')[0]) {
+		UNAME = params[0].split('=')[1].replace("%20", " ");
+		 $("#findMe").val(UNAME);
+	}
+	
 	addTable();
 	var maxId = getLastRegisteredUserId();
 	var users = getUsers();
@@ -110,12 +117,7 @@ function init() {
 		  
 	  });
 	
-	var params = location.href.split('?')[1].split('&');
-	if(params[0].split('=')[0]) {
-		UNAME = params[0].split('=')[1].replace("%20", " ");
-		 $("#findMe").val(UNAME);
-		applyFilter();
-	}
+	applyFilter();
 }
 
 function shuffle(array) {
