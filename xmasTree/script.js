@@ -113,7 +113,7 @@ function init() {
 		} else {
 			placeOnTreeFact = 126;
 		}
-		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + needYou + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
+		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username) + needYou;
 		  
 	  });
 	
