@@ -18,6 +18,16 @@ td {
     filter: saturate(9);
     pointer-events: none;
 }
+
+.you {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    border: 10px solid white;
+    border-radius: 60px;
+    pointer-events: none;
+}
+
 tr:nth-child(odd) td .star {
     margin-top: -109px;
     margin-left: -84px;
@@ -53,12 +63,12 @@ tr:nth-child(even) td .star {
     background-size: cover;
 }
 
-tr:nth-child(even) td .bauble {
+tr:nth-child(even) td .bauble, tr:nth-child(even) td .you {
     margin-top: -30px;
     margin-left: 15px !important;
     position: absolute;
 }
-tr:nth-child(odd) td .bauble {
+tr:nth-child(odd) td .bauble, tr:nth-child(odd) td .you {
     margin-top: -30px;
     margin-left: -15px !important;
     position: absolute;
