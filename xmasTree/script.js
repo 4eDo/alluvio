@@ -1,4 +1,6 @@
-const VERSION = "v 1.20";
+const VERSION = "v 1.21";
+
+var UNAME = '';
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
 
@@ -15,7 +17,8 @@ function applyFilter() {
 }
 var params = location.href.split('?')[1].split('&');
 if(params[0].split('=')[0]) {
-	 $("#findMe").val(params[0].split('=')[1]);
+	UNAME = params[0].split('=')[1].replace("%20", " ");
+	 $("#findMe").val(UNAME);
 }
 
 
@@ -98,6 +101,7 @@ function init() {
 	let placeId = 0;
 	users.forEach((user, index) => {
 		let needStar = user.group_id == 1 ? "<div class='star'></div>" : "";
+		let needYou = user.username === UNAME ? "<div class='you'></div>" : "";
 		let placeOnTreeFact;
 		if(user.user_id != 2) {
 			placeOnTreeFact = placesOnTree[placeId];
@@ -105,7 +109,7 @@ function init() {
 		} else {
 			placeOnTreeFact = 126;
 		}
-		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
+		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + needYou + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
 		  
 	  });
 }
