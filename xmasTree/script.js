@@ -1,6 +1,9 @@
-const VERSION = "v 1.17";
+const VERSION = "v 1.18";
 
 
+var VIEWER_NAME = window.parent.document.UserLogin;
+
+console.log("~~ VIEWER_NAME " + VIEWER_NAME + " ~~");
 console.log("~~ X-mas tree " + VERSION + " init ~~");
 
 function getLastRegisteredUserId() {
