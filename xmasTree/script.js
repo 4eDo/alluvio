@@ -91,9 +91,9 @@ function addTable() {
   }
   $("#treeGrid").append(table);
 }
-addTable();
 
 function init() {
+	addTable();
 	var maxId = getLastRegisteredUserId();
 	var users = getUsers();
 	let ball = `<div class='bauble backgroundAva' style='background-image: url("https://forumavatars.ru{{AVA}}")'> <div class='name'>{{UNAME}}</div></div>`;
@@ -114,7 +114,6 @@ function init() {
 		  
 	  });
 }
-init();
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
