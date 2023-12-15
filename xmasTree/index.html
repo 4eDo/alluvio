@@ -15,19 +15,4 @@
 	</div> 
   <script src="https://alluviodev.github.io/genealogy/js/zoom.js"></script>
   <script src="script.js"></script>
- <script>
-	 $("#findMe").on('change keyup paste', function () {
-		applyFilter();
-	});
-	
-	function applyFilter() {
-		var searchString = $("#findMe").val();
-		$(".finded").removeClass("finded");
-		if(searchString != "") {
-			$(".bauble:contains('" + searchString + "')").addClass("finded");
-		}
-	}
-
-	 
- </script>
 </body>
