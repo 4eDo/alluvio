@@ -1,7 +1,5 @@
 const VERSION = "v 1.19";
 
-
-console.log("~~ VIEWER_NAME " + VIEWER_NAME + " ~~");
 console.log("~~ X-mas tree " + VERSION + " init ~~");
 
 $("#findMe").on('change keyup paste', function () {
