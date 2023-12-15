@@ -1,4 +1,4 @@
-const VERSION = "v 1.28";
+const VERSION = "v 1.29";
 
 var UNAME = '';
 
@@ -105,7 +105,7 @@ function init() {
 	let placeId = 0;
 	users.forEach((user, index) => {
 		let needStar = user.group_id == 1 ? "<div class='star'></div>" : "";
-		let needYou = user.username === UNAME ? "<div class='you'></div>" : "";
+		let needYou = new String(user.username).valueOf() == new String(UNAME).valueOf() ? "<div class='you'></div>" : "";
 		let placeOnTreeFact;
 		if(user.user_id != 2) {
 			placeOnTreeFact = placesOnTree[placeId];
