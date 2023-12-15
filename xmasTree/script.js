@@ -1,4 +1,4 @@
-const VERSION = "v 1.24";
+const VERSION = "v 1.25";
 
 var UNAME = '';
 
@@ -15,13 +15,6 @@ function applyFilter() {
 		$(".bauble:contains('" + searchString + "')").addClass("finded");
 	}
 }
-var params = location.href.split('?')[1].split('&');
-if(params[0].split('=')[0]) {
-	UNAME = params[0].split('=')[1].replace("%20", " ");
-	 $("#findMe").val(UNAME);
-	applyFilter();
-}
-
 
 function getLastRegisteredUserId() {
   var lastId = 0;
@@ -115,6 +108,13 @@ function init() {
 		  document.querySelector("[cellid='" + placeOnTreeFact + "']").innerHTML = needStar + needYou + ball.replace("{{AVA}}", user.avatar).replaceAll('{{UNAME}}', user.username);
 		  
 	  });
+	
+	var params = location.href.split('?')[1].split('&');
+	if(params[0].split('=')[0]) {
+		UNAME = params[0].split('=')[1].replace("%20", " ");
+		 $("#findMe").val(UNAME);
+		applyFilter();
+	}
 }
 
 function shuffle(array) {
