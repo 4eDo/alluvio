@@ -1,4 +1,4 @@
-const VERSION = "v 1.19";
+const VERSION = "v 1.20";
 
 console.log("~~ X-mas tree " + VERSION + " init ~~");
 
@@ -14,8 +14,8 @@ function applyFilter() {
 	}
 }
 var params = location.href.split('?')[1].split('&');
-if(params["uname"].split('=')[0]) {
-	 $("#findMe").val(params["uname"].split('=')[1]);
+if(params[0].split('=')[0]) {
+	 $("#findMe").val(params[0].split('=')[1]);
 }
 
 
