@@ -1,7 +1,11 @@
 const VERSION = "v 1.18";
 
 
-var VIEWER_NAME = window.parent.document.UserLogin;
+var params = location.href.split('?')[1].split('&');
+for (x in params)
+ {
+	console.log(params[x].split('=')[0] + " " + params[x].split('=')[1]);
+ }
 
 console.log("~~ VIEWER_NAME " + VIEWER_NAME + " ~~");
 console.log("~~ X-mas tree " + VERSION + " init ~~");
