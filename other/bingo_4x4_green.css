@@ -1,13 +1,14 @@
 :root{
   --circleDiameter: 140px;
-  --bgGray: #cbcbcb;
-    --bgChecked: #d1e9a0;
+  --bgGray: #bbbbbb;
+    --bgChecked: #6e766b;
     --text: #2b360b;
-    --dottedBorder: #7f984b;
+  --textChecked: #c6c6c6;
+    --dottedBorder: #6e766b;
 }
 .x, .X, .х, .Х {
   background-color: var(--bgChecked) !important;
-  border: 5px dotted var(--bgGray) !important;
+  border: 5px dotted var(--bgGray) !important;color: var(--textChecked) !important;
 }
 .bingo {
   color: var(--text);
@@ -72,8 +73,6 @@ text-transform: none;
 
 .bingo > tbody > tr > td > div > div > div {
     align-content: center;
-    width: 
-  height: var(--circleDiameter);
     margin-left: calc(var(--circleDiameter) * -1);
 }
 
