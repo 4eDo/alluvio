@@ -10,13 +10,6 @@
   border: 5px dotted var(--bgGray) !important;
 }
 .bingo {
-  width: 410px;
-  display: grid;
-    transition: 0.5s;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
   color: var(--text);
   
   font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -30,8 +23,14 @@ font-style: normal;
 font-variant: small-caps;
 text-transform: none;
 }
-
-.bingo > div {
+.bingo > tbody > tr > td {
+  border: 3px solid rgba(0,0,0,0);
+  width: var(--circleDiameter);
+  height: var(--circleDiameter);
+  text-align: center;
+  vertical-align: middle;
+}
+.bingo > tbody > tr > td > div {
   background-color: var(--bgGray);
   border: 5px dotted var(--dottedBorder);
   border-radius: 50%;
@@ -43,7 +42,7 @@ text-transform: none;
   
 }
 
-.bingo > div::before {
+.bingo > tbody > tr > td > div::before {
   content: "";
   float: left;
   height: var(--circleDiameter);
@@ -64,11 +63,21 @@ text-transform: none;
   shape-margin: 2px;
 }
 
-.bingo > div > div {
+.bingo > tbody > tr > td > div > div {
   height: var(--circleDiameter) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.bingo > div > div::before {
+.bingo > tbody > tr > td > div > div > div {
+    align-content: center;
+    width: 
+  height: var(--circleDiameter);
+    margin-left: calc(var(--circleDiameter) * -1);
+}
+
+.bingo > tbody > tr > td > div > div::before {
   content: "";
   float: right;
   height: var(--circleDiameter);
