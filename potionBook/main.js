@@ -247,9 +247,10 @@ function findPotByName(potName){
 	for (let i = 0; i < potions.length; i++){
 		if (potions[i]["name"].toLowerCase() == potName.toLowerCase()) {
 			return potions[i];
-		} else if(potions[i]["otherNames"]) {
+		} else {
 			for(var nm in potions[i]["otherNames"]) {
 				if(nm.toLowerCase() == potName.toLowerCase()) {
+					console.log("Other name: " + nm);
 					return potions[i];
 				}
 			}
