@@ -207,7 +207,7 @@ function showMe(potName) {
 	let needed = "<h4>Состав:</h4><p><i>";
 	let neededArr = [];
 	for(var ingr in findedPotion["neededList"]) {
-		neededArr.push(returnClickableSpanIfPotExistElseString(ingr));
+		neededArr.push(returnClickableSpanIfPotExistElseString(findedPotion["neededList"][ingr]));
 	}
 	needed += neededArr.join(', ');
 	needed += "</i></p>";
@@ -218,7 +218,7 @@ function showMe(potName) {
 		ant = "<h4>Противоядия:</h4><p><i>";
 		let antArr = [];
 		for(var ingr in findedPotion["antidote"]) {
-			antArr.push(returnClickableSpanIfPotExistElseString(ingr));
+			antArr.push(returnClickableSpanIfPotExistElseString(findedPotion["antidote"][ingr]));
 		}
 		ant += antArr.join(', ');
 		ant += "</i></p>";
@@ -253,8 +253,8 @@ function findPotByName(potName){
 			return potions[i];
 		} else {
 			for(var nm in potions[i]["otherNames"]) {
-				if(nm.toLowerCase() == potName.toLowerCase()) {
-					console.log("Other name: " + nm);
+				if(potions[i]["otherNames"][nm].toLowerCase() == potName.toLowerCase()) {
+					console.log("Other name: " + potions[i]["otherNames"][nm]);
 					return potions[i];
 				}
 			}
