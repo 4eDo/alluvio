@@ -263,7 +263,7 @@ function findPotByName(potName){
 	return 0;
 }
 function returnClickableSpanIfPotExistElseString(potName) {
-	let existIngr = findPotByName(findedPotion["neededList"][ingr]);
+	let existIngr = findPotByName(potName);
 	let temp = `<span class="existPot" title="Открыть" onclick="showMe('{{POT_NAME_MAIN}}')">{{POT_NAME}}</span>`;
 	if(existIngr == 0) {
 		return potName;
