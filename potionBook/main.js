@@ -207,23 +207,27 @@ function showMe(potName) {
 	let needed = "<h4>Состав:</h4><p><i>";
 	let neededArr = [];
 	for(var ingr in findedPotion["neededList"]) {
-		let existIngr = findPotByName(findedPotion["neededList"][ingr]);
-		let temp = `<span class="existPot" title="Открыть" onclick="showMe('{{POT_NAME}}')">{{POT_NAME}}</span>`;
-		if(existIngr == 0) {
-			neededArr.push(findedPotion["neededList"][ingr]);
-		} else {
-			neededArr.push(temp.replaceAll("{{POT_NAME}}", findedPotion["neededList"][ingr]));
-		}
+		neededArr.push(returnClickableSpanIfPotExistElseString(ingr));
 	}
 	needed += neededArr.join(', ');
 	needed += "</i></p>";
 	potionCard = potionCard.replace("{{NEEDED}}", needed); 
+
+	let ant = "";
+	if(findedPotion["antidote"] && findedPotion["antidote"].length != 0) {
+		ant = "<h4>Противоядия:</h4><p><i>";
+		let antArr = [];
+		for(var ingr in findedPotion["antidote"]) {
+			antArr.push(returnClickableSpanIfPotExistElseString(ingr));
+		}
+		ant += antArr.join(', ');
+		ant += "</i></p>";
+	}
+	potionCard = potionCard.replace("{{ANTIDOTE}}", ant);
+	
 	
 	potionCard = potionCard.replace("{{ACTIONS_GOOD}}", findedPotion["actionsGood"].join(', ')); 
 	potionCard = potionCard.replace("{{ACTIONS_BAD}}", findedPotion["actionsBad"].join(', ')); 
-	potionCard = potionCard.replace("{{ANTIDOTE}}", findedPotion["antidote"] && findedPotion["antidote"].length != 0
-		? "<h4>Противоядия: </h4><p><i>" + findedPotion["antidote"].join(', ') + "</i></p>"
-		: ""); 
 	potionCard = potionCard.replace("{{TAGS}}", findedPotion["tags"] && findedPotion["tags"].length != 0
 		? "<h4>Метки: </h4><p><i>" + findedPotion["tags"].join(', ') + "</i></p>"
 		: "");
@@ -257,4 +261,15 @@ function findPotByName(potName){
 		}
 	}
 	return 0;
+}
+function returnClickableSpanIfPotExistElseString(potName) {
+	let existIngr = findPotByName(findedPotion["neededList"][ingr]);
+	let temp = `<span class="existPot" title="Открыть" onclick="showMe('{{POT_NAME_MAIN}}')">{{POT_NAME}}</span>`;
+	if(existIngr == 0) {
+		return potName;
+	} else {
+		return temp
+			.replace("{{POT_NAME_MAIN}}", existIngr["name"].toLowerCase())
+			.replace("{{POT_NAME}}", potName);
+	}
 }
