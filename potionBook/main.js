@@ -245,8 +245,14 @@ function sortSet(set) {
 
 function findPotByName(potName){
 	for (let i = 0; i < potions.length; i++){
-		if (potions[i]["name"] == potName) {
+		if (potions[i]["name"].toLowerCase() == potName.toLowerCase()) {
 			return potions[i];
+		} else if(potions[i]["otherNames"]) {
+			for(var nm in potions[i]["otherNames"]) {
+				if(nm.toLowerCase() == potName.toLowerCase()) {
+					return potions[i];
+				}
+			}
 		}
 	}
 	return 0;
