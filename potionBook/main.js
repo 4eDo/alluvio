@@ -155,7 +155,13 @@ function doFilter(){
 		sidebar += "<li class='"+ isVisible +"' data-name='"
 		+ potions[i]["name"]
 		+ `' onclick='showMe("` + potions[i]["name"] + `")'>`;
-		sidebar += potions[i]["isCanon"] ? '<span class="material-symbols-outlined canonMarker">book_3</span>' : '<span class="material-symbols-outlined canonMarker">person</span>';
+		
+		sidebar += potions[i]["isCanon"]
+			? '<span class="material-symbols-outlined canonMarker" title="Канон">book_3</span>'
+			: '<span class="material-symbols-outlined canonMarker" title="Самопальное">person</span>';
+		sidebar += potions[i]["isIngr"]
+			? '<span class="material-symbols-outlined canonMarker" title="Ингредиент">temp_preferences_eco</span>'
+			: "";
 		sidebar += potions[i]["name"] + "</li>"; 
 	}
 	let status = "Показано: " + show + ";<br>скрыто: " + hide + ";<br>всего: " + total;
