@@ -10,6 +10,7 @@ const TEMPLATE_CARD = `<div>
 	<h4>Описание:</h4>
 	<p>{{DESCRIPTION}}</p>
 	{{NEEDED}}
+ 	{{RECIPE}}
 	<h4>Полезное действие:</h4>
 	<p>{{ACTIONS_GOOD}}</p>
 	<h4>Негативное действие:</h4>
@@ -257,6 +258,12 @@ function showMe(potName) {
 	needed += neededArr.join(', ');
 	needed += "</i></p>";
 	potionCard = potionCard.replace("{{NEEDED}}", needed); 
+
+	let recipe = "";
+	if(findedPotion["recipe"]) {
+		recipe = "<h4>Изготовление:</h4><div>" + findedPotion["recipe"] + "</div>";
+	}
+	potionCard = potionCard.replace("{{RECIPE}}", recipe); 
 
 	let ant = "";
 	if(findedPotion["antidote"] && findedPotion["antidote"].length != 0) {
