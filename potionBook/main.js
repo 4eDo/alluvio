@@ -111,11 +111,15 @@ function doFilter(){
 	const selectedTag = document.querySelector("#inpTags").value;
 	const selectedGood = document.querySelector("#inpActGood").value;
 	const selectedBad = document.querySelector("#inpActBad").value;
+	const selectedCanon = document.querySelector("#selCanon").value;
+	const selectedType = document.querySelector("#selPot").value;
 	
 	var sidebar = "";
 	let isOkTag = false;
 	let isOkGood = false;
 	let isOkBad = false;
+	let isOkCanon = false;
+	let isOkType = false;
 	
 	let show = 0;
 	let hide = 0;
@@ -124,6 +128,8 @@ function doFilter(){
 		isOkTag = false;
 		isOkGood = false;
 		isOkBad = false;
+		isOkCanon = false;
+		isOkType = false;
 		
 		if(selectedTag == "" || selectedTag == "Показать всё") {
 			isOkTag = true;
@@ -141,6 +147,18 @@ function doFilter(){
 			isOkBad = true;
 		} else {
 			isOkBad = potions[i]["actionsBad"].includes(selectedBad);
+		}
+
+		if(selectedCanon == "all") {
+			isOkCanon = true;
+		} else {
+			isOkCanon = potions[i]["isCanon"];
+		}
+		
+		if(selectedType == "all") {
+			isOkType = true;
+		} else {
+			isOkType = !potions[i]["isIngr"];
 		}
 		
 		let isVisible;
