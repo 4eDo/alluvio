@@ -157,6 +157,8 @@ function doFilter(){
 		
 		if(selectedType == "all") {
 			isOkType = true;
+		} else if(selectedType == "ingr") {
+			isOkType = potions[i]["isIngr"];
 		} else {
 			isOkType = !potions[i]["isIngr"];
 		}
