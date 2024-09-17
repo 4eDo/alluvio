@@ -46,13 +46,13 @@ async function loadPotions(param = 0) {
 			allActionsBad.add(potions[i]["actionsBad"][ab]);
 		}
 
-		for(var ingredient in potions[i]["neededList"]) {
+		potions[i]["neededList"].forEach(ingredient => {
 			if (ingredientToPotions[ingredient]) {
 				ingredientToPotions[ingredient].push(returnPrimoNameIfExist(potions[i]["name"]));
 			} else {
 				ingredientToPotions[ingredient] = [returnPrimoNameIfExist(potions[i]["name"])];
 			}
-		}
+		});
 		sidebar += "<li data-name='"
 		+ potions[i]["name"]
 		+ `' onclick='showMe("` + potions[i]["name"] + `")'>`;
