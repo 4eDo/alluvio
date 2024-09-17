@@ -277,7 +277,7 @@ function showMe(potName) {
 
 	let needInPotsStr = "";
 	if(ingredientToPotions[findedPotion["name"]]) {
-		ant = "<h4>Применяется в:</h4><p><i>";
+		needInPotsStr = "<h4>Применяется в:</h4><p><i>";
 		let needInPots = [];
 		for(var ingr in ingredientToPotions[findedPotion["name"]]) {
 			needInPots.push(returnClickableSpanIfPotExistElseString(ingredientToPotions[findedPotion["name"]][ingr]));
