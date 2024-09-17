@@ -162,7 +162,7 @@ function doFilter(){
 		}
 		
 		let isVisible;
-		if(isOkTag && isOkGood && isOkBad) {
+		if(isOkTag && isOkGood && isOkBad && isOkCanon && isOkType) {
 			isVisible = "show";
 			show++;
 		} else {
