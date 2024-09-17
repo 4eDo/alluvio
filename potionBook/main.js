@@ -16,12 +16,14 @@ const TEMPLATE_CARD = `<div>
 	<p>{{ACTIONS_BAD}}</p>
 	{{ANTIDOTE}}
 	{{TAGS}}
+	{{INCLUDES_LIST}}
 </div>`;
 
 var allTagsSet = new Set();
 var allActionsGood = new Set();
 var allActionsBad = new Set();
 var potions;
+var ingredientToPotions = {};
 
 async function loadPotions(param = 0) {
 	const response = await fetch(potionsSrc);
@@ -42,6 +44,14 @@ async function loadPotions(param = 0) {
 		}
 		for(var ab in potions[i]["actionsBad"]) {
 			allActionsBad.add(potions[i]["actionsBad"][ab]);
+		}
+
+		for(var ingredient in potions[i]["neededList"]) {
+			if (ingredientToDishes[ingredient]) {
+				ingredientToPotions[ingredient].push(returnPrimoNameIfExist(potions[i]["name"]));
+			} else {
+				ingredientToPotions[ingredient] = [returnPrimoNameIfExist(potions[i]["name"])];
+			}
 		}
 		sidebar += "<li data-name='"
 		+ potions[i]["name"]
@@ -265,6 +275,19 @@ function showMe(potName) {
 		? "<h4>Метки: </h4><p><i>" + findedPotion["tags"].join(', ') + "</i></p>"
 		: "");
 
+	let needInPotsStr = "";
+	if(ingredientToPotions[findedPotion["name"]]) {
+		ant = "<h4>Применяется в:</h4><p><i>";
+		let needInPots = [];
+		for(var ingr in ingredientToPotions[findedPotion["name"]]) {
+			needInPots.push(returnClickableSpanIfPotExistElseString(ingredientToPotions[findedPotion["name"]][ingr]));
+		}
+		needInPotsStr += needInPots.join(', ');
+		needInPotsStr += "</i></p>";
+	} 
+	potionCard = potionCard.replace("{{INCLUDES_LIST}}", needInPotsStr); 
+	
+
 	document.getElementById("entity").innerHTML = potionCard;
 }
 
@@ -305,4 +328,19 @@ function returnClickableSpanIfPotExistElseString(potName) {
 			.replace("{{POT_NAME_MAIN}}", existIngr["name"].toLowerCase())
 			.replace("{{POT_NAME}}", potName);
 	}
+}
+function returnPrimoNameIfExist(potName) {
+	for (let i = 0; i < potions.length; i++){
+		if (potions[i]["name"].toLowerCase() == potName.toLowerCase()) {
+			return potions[i]["name"];
+		} else {
+			for(var nm in potions[i]["otherNames"]) {
+				if(potions[i]["otherNames"][nm].toLowerCase() == potName.toLowerCase()) {
+					console.log("Other name: " + potions[i]["otherNames"][nm]);
+					return potions[i]["name"];
+				}
+			}
+		}
+	}
+	return 0;
 }
