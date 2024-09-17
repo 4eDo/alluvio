@@ -24,14 +24,14 @@ tr {vertical-align: top;}
 .show{
 	display: block;
 }
-li{
+ul li{
 	border: 1px solid #33333333;
 	border-radius: 2px;
 	padding: 2px;
 	cursor: pointer;
 	list-style: none;
 }
-li:hover{
+ul li:hover{
 	background-color: #33333333;
 }
 h3 {
