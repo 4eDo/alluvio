@@ -47,7 +47,7 @@ async function loadPotions(param = 0) {
 		}
 
 		for(var ingredient in potions[i]["neededList"]) {
-			if (ingredientToDishes[ingredient]) {
+			if (ingredientToPotions[ingredient]) {
 				ingredientToPotions[ingredient].push(returnPrimoNameIfExist(potions[i]["name"]));
 			} else {
 				ingredientToPotions[ingredient] = [returnPrimoNameIfExist(potions[i]["name"])];
