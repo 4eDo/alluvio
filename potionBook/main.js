@@ -151,8 +151,10 @@ function doFilter(){
 
 		if(selectedCanon == "all") {
 			isOkCanon = true;
-		} else {
+		} else if(selectedCanon == "canon") {
 			isOkCanon = potions[i]["isCanon"];
+		} else {
+			isOkCanon = !potions[i]["isCanon"];
 		}
 		
 		if(selectedType == "all") {
