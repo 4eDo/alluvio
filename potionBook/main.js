@@ -276,7 +276,7 @@ function showMe(potName) {
 		: "");
 
 	let needInPotsStr = "";
-	if(ingredientToPotions[findedPotion["name"]]) {
+	if(ingredientToPotions[findedPotion["name"].toLowerCase()] && ingredientToPotions[findedPotion["name"]].length != 0) {
 		needInPotsStr = "<h4>Применяется в:</h4><p><i>";
 		let needInPots = [];
 		for(var ingr in ingredientToPotions[findedPotion["name"]]) {
