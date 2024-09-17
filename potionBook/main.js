@@ -47,10 +47,10 @@ async function loadPotions(param = 0) {
 		}
 
 		potions[i]["neededList"].forEach(ingredient => {
-			if (ingredientToPotions[ingredient]) {
-				ingredientToPotions[ingredient].push(returnPrimoNameIfExist(potions[i]["name"]));
+			if (ingredientToPotions[ingredient.toLowerCase()]) {
+				ingredientToPotions[ingredient.toLowerCase()].push(returnPrimoNameIfExist(potions[i]["name"]));
 			} else {
-				ingredientToPotions[ingredient] = [returnPrimoNameIfExist(potions[i]["name"])];
+				ingredientToPotions[ingredient.toLowerCase()] = [returnPrimoNameIfExist(potions[i]["name"])];
 			}
 		});
 		sidebar += "<li data-name='"
@@ -279,8 +279,8 @@ function showMe(potName) {
 	if(ingredientToPotions[findedPotion["name"].toLowerCase()] && ingredientToPotions[findedPotion["name"]].length != 0) {
 		needInPotsStr = "<h4>Применяется в:</h4><p><i>";
 		let needInPots = [];
-		for(var ingr in ingredientToPotions[findedPotion["name"]]) {
-			needInPots.push(returnClickableSpanIfPotExistElseString(ingredientToPotions[findedPotion["name"]][ingr]));
+		for(var ingr in ingredientToPotions[findedPotion["name"].toLowerCase()]) {
+			needInPots.push(returnClickableSpanIfPotExistElseString(ingredientToPotions[findedPotion["name"].toLowerCase()][ingr]));
 		}
 		needInPotsStr += needInPots.join(', ');
 		needInPotsStr += "</i></p>";
