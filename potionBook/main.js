@@ -1,4 +1,4 @@
-var potionsSrc= "https://4edo.github.io/alluvio/potionBook/data.json";
+var potionsSrc= "https://4edo.github.io/potions/data.json";
 
 const TEMPLATE_CARD = `<div>
 	<h3>{{NAME}}<sup>{{CANONICAL}}</sup></h3>
